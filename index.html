@@ -5956,8 +5956,8 @@ done:
                     </div>
 
                     <!-- Slide 4.8: Instruction Pipelining -->
-                    <div class="slide" id="slide-4.8">
-                        <h2 class="slide-title">Instruction Pipelining</h2>
+                    <div class="container-fluid slide" id="slide-4.8">
+                        <h2 class="slide-title my-4">Instruction Pipelining</h2>
                         <div class="slide-content">
                             <div class="row">
                                 <div class="col-md-6">
@@ -5976,14 +5976,81 @@ done:
 
                                             <div class="alert alert-info">
                                                 <h5>Classic 5-Stage RISC Pipeline:</h5>
-                                                <img src="/api/placeholder/550/200" alt="5-Stage Pipeline" class="img-fluid" />
+                                                <svg viewBox="0 0 550 200" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- Pipeline Stage Boxes -->
+                                                    <rect x="10" y="50" width="100" height="60" fill="#4285f4" rx="5" />
+                                                    <rect x="120" y="50" width="100" height="60" fill="#34a853" rx="5" />
+                                                    <rect x="230" y="50" width="100" height="60" fill="#fbbc05" rx="5" />
+                                                    <rect x="340" y="50" width="100" height="60" fill="#ea4335" rx="5" />
+                                                    <rect x="450" y="50" width="90" height="60" fill="#9c27b0" rx="5" />
+                                                    
+                                                    <!-- Stage Labels -->
+                                                    <text x="60" y="85" fill="white" text-anchor="middle" font-weight="bold">IF</text>
+                                                    <text x="170" y="85" fill="white" text-anchor="middle" font-weight="bold">ID</text>
+                                                    <text x="280" y="85" fill="white" text-anchor="middle" font-weight="bold">EX</text>
+                                                    <text x="390" y="85" fill="white" text-anchor="middle" font-weight="bold">MEM</text>
+                                                    <text x="495" y="85" fill="white" text-anchor="middle" font-weight="bold">WB</text>
+                                                    
+                                                    <!-- Flow Arrows -->
+                                                    <path d="M 110 80 L 120 80" stroke="black" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+                                                    <path d="M 220 80 L 230 80" stroke="black" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+                                                    <path d="M 330 80 L 340 80" stroke="black" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+                                                    <path d="M 440 80 L 450 80" stroke="black" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+                                                    
+                                                    <!-- Arrowhead Marker -->
+                                                    <defs>
+                                                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                            <polygon points="0 0, 10 3.5, 0 7" />
+                                                        </marker>
+                                                    </defs>
+                                                    
+                                                    <!-- Clock Cycles -->
+                                                    <line x1="10" y1="120" x2="540" y2="120" stroke="#777" stroke-width="1" />
+                                                    <text x="60" y="140" text-anchor="middle" font-size="12">Cycle 1</text>
+                                                    <text x="170" y="140" text-anchor="middle" font-size="12">Cycle 2</text>
+                                                    <text x="280" y="140" text-anchor="middle" font-size="12">Cycle 3</text>
+                                                    <text x="390" y="140" text-anchor="middle" font-size="12">Cycle 4</text>
+                                                    <text x="495" y="140" text-anchor="middle" font-size="12">Cycle 5</text>
+                                                    
+                                                    <!-- Pipelined Instructions -->
+                                                    <rect x="10" y="160" width="100" height="20" fill="#4285f4" fill-opacity="0.7" rx="3" />
+                                                    <text x="60" y="174" text-anchor="middle" font-size="10">Inst 1: IF</text>
+                                                    
+                                                    <rect x="120" y="160" width="100" height="20" fill="#4285f4" fill-opacity="0.7" rx="3" />
+                                                    <text x="170" y="174" text-anchor="middle" font-size="10">Inst 2: IF</text>
+                                                    
+                                                    <rect x="230" y="160" width="100" height="20" fill="#4285f4" fill-opacity="0.7" rx="3" />
+                                                    <text x="280" y="174" text-anchor="middle" font-size="10">Inst 3: IF</text>
+                                                    
+                                                    <rect x="340" y="160" width="100" height="20" fill="#4285f4" fill-opacity="0.7" rx="3" />
+                                                    <text x="390" y="174" text-anchor="middle" font-size="10">Inst 4: IF</text>
+                                                    
+                                                    <rect x="450" y="160" width="90" height="20" fill="#4285f4" fill-opacity="0.7" rx="3" />
+                                                    <text x="495" y="174" text-anchor="middle" font-size="10">Inst 5: IF</text>
+                                                    
+                                                    <rect x="120" y="180" width="100" height="20" fill="#34a853" fill-opacity="0.7" rx="3" />
+                                                    <text x="170" y="194" text-anchor="middle" font-size="10">Inst 1: ID</text>
+                                                    
+                                                    <rect x="230" y="180" width="100" height="20" fill="#34a853" fill-opacity="0.7" rx="3" />
+                                                    <text x="280" y="194" text-anchor="middle" font-size="10">Inst 2: ID</text>
+                                                </svg>
                                                 <ol>
-                                                    <li><strong>Instruction Fetch (IF):</strong> Get instruction from memory</li>
-                                                    <li><strong>Instruction Decode (ID):</strong> Decode and register read</li>
-                                                    <li><strong>Execute (EX):</strong> Perform ALU operations</li>
-                                                    <li><strong>Memory Access (MEM):</strong> Read/write memory if needed</li>
-                                                    <li><strong>Write Back (WB):</strong> Update registers with results</li>
+                                                    <li><strong>Instruction Fetch (IF):</strong> Gets instruction from memory using the program counter (PC). The PC is then incremented to point to the next instruction.</li>
+                                                    <li><strong>Instruction Decode (ID):</strong> Decodes the instruction to determine operation type and reads required registers. Includes operand fetch and hazard detection.</li>
+                                                    <li><strong>Execute (EX):</strong> Performs ALU operations (arithmetic, logic, address calculation). For branch instructions, the branch target is calculated here.</li>
+                                                    <li><strong>Memory Access (MEM):</strong> For load/store instructions, accesses data memory. Other instructions simply pass through this stage.</li>
+                                                    <li><strong>Write Back (WB):</strong> Writes results back to the register file, completing the instruction execution.</li>
                                                 </ol>
+                                            </div>
+                                            
+                                            <div class="example-code mt-3">
+                                                <h6>Example Sequence:</h6>
+                                                <pre>
+add r1, r2, r3    # r1 = r2 + r3
+sub r4, r1, r5    # r4 = r1 - r5
+lw  r6, 8(r4)     # r6 = Memory[r4+8]
+sw  r6, 16(r7)    # Memory[r7+16] = r6
+beq r1, r8, label # If r1 == r8, branch to label</pre>
                                             </div>
                                         </div>
                                     </div>
@@ -6000,11 +6067,12 @@ done:
                                             <h6>1. Structural Hazards:</h6>
                                             <ul>
                                                 <li><strong>Cause:</strong> Hardware resource conflicts (e.g., single memory for instructions and data)</li>
+                                                <li><strong>Example:</strong> Both IF and MEM stages need to access memory simultaneously</li>
                                                 <li><strong>Solutions:</strong>
                                                     <ul>
-                                                        <li>Duplicate resources (separate instruction and data caches)</li>
-                                                        <li>Pipeline stalls (wait for resource availability)</li>
-                                                        <li>Resource scheduling to avoid conflicts</li>
+                                                        <li>Duplicate resources (separate instruction and data caches) - Harvard architecture</li>
+                                                        <li>Pipeline stalls (wait for resource availability) - insert "bubbles"</li>
+                                                        <li>Resource scheduling to avoid conflicts - time-division multiplexing of memory</li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -6014,30 +6082,92 @@ done:
                                                 <li><strong>Cause:</strong> Data dependencies between instructions</li>
                                                 <li><strong>Types:</strong>
                                                     <ul>
-                                                        <li>RAW (Read After Write): True dependency</li>
-                                                        <li>WAR (Write After Read): Anti-dependency</li>
-                                                        <li>WAW (Write After Write): Output dependency</li>
+                                                        <li><strong>RAW (Read After Write):</strong> True dependency - Instruction tries to read operand before previous instruction writes it</li>
+                                                        <li><strong>WAR (Write After Read):</strong> Anti-dependency - Instruction tries to write operand before previous instruction reads it</li>
+                                                        <li><strong>WAW (Write After Write):</strong> Output dependency - Two instructions try to write to same location</li>
                                                     </ul>
                                                 </li>
                                                 <li><strong>Solutions:</strong>
                                                     <ul>
-                                                        <li>Forwarding/Bypassing: Pass results directly to dependent instructions</li>
-                                                        <li>Register renaming: Eliminate WAR and WAW hazards</li>
-                                                        <li>Pipeline stalls/bubbles: Insert delays when necessary</li>
-                                                        <li>Instruction scheduling: Compiler reordering to avoid hazards</li>
+                                                        <li><strong>Forwarding/Bypassing:</strong> Pass results directly from execution units to where they're needed</li>
+                                                        <li><strong>Register renaming:</strong> Use different physical registers to eliminate WAR and WAW hazards</li>
+                                                        <li><strong>Pipeline stalls/bubbles:</strong> Insert delays when forwarding isn't possible</li>
+                                                        <li><strong>Instruction scheduling:</strong> Compiler reordering to avoid hazards by separating dependent instructions</li>
                                                     </ul>
                                                 </li>
                                             </ul>
                                             
+                                            <div class="alert alert-secondary mt-3">
+                                                <h6>RAW Hazard Example:</h6>
+                                                <div class="example-code">
+                                                    <pre>
+add r1, r2, r3    # r1 = r2 + r3
+sub r4, r1, r5    # r4 = r1 - r5</pre>
+                                                </div>
+                                                <p>The subtraction needs r1, which is being produced by the ADD instruction. Without forwarding, the SUB instruction would need to stall until r1 is written back.</p>
+                                                
+                                                <svg viewBox="0 0 550 120" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- Clock cycles -->
+                                                    <line x1="50" y1="20" x2="550" y2="20" stroke="#777" stroke-width="1" />
+                                                    <text x="80" y="15" text-anchor="middle" font-size="10">C1</text>
+                                                    <text x="160" y="15" text-anchor="middle" font-size="10">C2</text>
+                                                    <text x="240" y="15" text-anchor="middle" font-size="10">C3</text>
+                                                    <text x="320" y="15" text-anchor="middle" font-size="10">C4</text>
+                                                    <text x="400" y="15" text-anchor="middle" font-size="10">C5</text>
+                                                    <text x="480" y="15" text-anchor="middle" font-size="10">C6</text>
+                                                    
+                                                    <!-- Instructions -->
+                                                    <text x="30" y="50" text-anchor="end" font-size="10">ADD</text>
+                                                    <text x="30" y="80" text-anchor="end" font-size="10">SUB</text>
+                                                    
+                                                    <!-- Without forwarding -->
+                                                    <rect x="50" y="40" width="60" height="20" fill="#4285f4" rx="3" />
+                                                    <rect x="130" y="40" width="60" height="20" fill="#34a853" rx="3" />
+                                                    <rect x="210" y="40" width="60" height="20" fill="#fbbc05" rx="3" />
+                                                    <rect x="290" y="40" width="60" height="20" fill="#ea4335" rx="3" />
+                                                    <rect x="370" y="40" width="60" height="20" fill="#9c27b0" rx="3" />
+                                                    
+                                                    <rect x="130" y="70" width="60" height="20" fill="#4285f4" rx="3" />
+                                                    <rect x="210" y="70" width="60" height="20" fill="#34a853" rx="3" />
+                                                    <rect x="290" y="70" width="60" height="20" fill="#ccc" rx="3" stroke="#999" stroke-dasharray="5,2" />
+                                                    <rect x="370" y="70" width="60" height="20" fill="#fbbc05" rx="3" />
+                                                    <rect x="450" y="70" width="60" height="20" fill="#ea4335" rx="3" />
+                                                    
+                                                    <!-- Labels -->
+                                                    <text x="80" y="54" text-anchor="middle" font-size="10" fill="white">IF</text>
+                                                    <text x="160" y="54" text-anchor="middle" font-size="10" fill="white">ID</text>
+                                                    <text x="240" y="54" text-anchor="middle" font-size="10" fill="white">EX</text>
+                                                    <text x="320" y="54" text-anchor="middle" font-size="10" fill="white">MEM</text>
+                                                    <text x="400" y="54" text-anchor="middle" font-size="10" fill="white">WB</text>
+                                                    
+                                                    <text x="160" y="84" text-anchor="middle" font-size="10" fill="white">IF</text>
+                                                    <text x="240" y="84" text-anchor="middle" font-size="10" fill="white">ID</text>
+                                                    <text x="320" y="84" text-anchor="middle" font-size="10">STALL</text>
+                                                    <text x="400" y="84" text-anchor="middle" font-size="10" fill="white">EX</text>
+                                                    <text x="480" y="84" text-anchor="middle" font-size="10" fill="white">MEM</text>
+                                                    
+                                                    <!-- Data dependency arrow -->
+                                                    <path d="M 400 60 C 420 90, 350 100, 320 90" stroke="red" stroke-width="2" fill="none" marker-end="url(#redarrow)" />
+                                                    
+                                                    <!-- Arrowhead Marker -->
+                                                    <defs>
+                                                        <marker id="redarrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                            <polygon points="0 0, 10 3.5, 0 7" fill="red" />
+                                                        </marker>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                            
                                             <h6>3. Control Hazards:</h6>
                                             <ul>
                                                 <li><strong>Cause:</strong> Changes in program flow (branches, jumps, calls)</li>
+                                                <li><strong>Example:</strong> When a branch is taken, instructions already fetched from sequential path must be discarded</li>
                                                 <li><strong>Solutions:</strong>
                                                     <ul>
-                                                        <li>Branch prediction: Guess branch outcome</li>
-                                                        <li>Delayed branching: Execution of instructions in branch delay slots</li>
-                                                        <li>Speculative execution: Continue execution along predicted path</li>
-                                                        <li>Predication: Execute both paths and select result based on condition</li>
+                                                        <li><strong>Branch prediction:</strong> Static (always predict taken/not taken) or dynamic (based on history)</li>
+                                                        <li><strong>Delayed branching:</strong> Execute instruction(s) in branch delay slot regardless of branch outcome</li>
+                                                        <li><strong>Speculative execution:</strong> Continue execution along predicted path, but don't commit until branch resolves</li>
+                                                        <li><strong>Predication:</strong> Execute both paths and select result based on condition (avoiding branches)</li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -6057,23 +6187,71 @@ done:
                                                     
                                                     <h6>Superpipelining:</h6>
                                                     <ul>
-                                                        <li><strong>Definition:</strong> Dividing pipeline stages into smaller substages</li>
-                                                        <li><strong>Benefit:</strong> Allows higher clock frequencies</li>
-                                                        <li><strong>Challenge:</strong> Increases branch misprediction penalty</li>
-                                                        <li><strong>Example:</strong> Early MIPS R4000 with 8-stage pipeline</li>
+                                                        <li><strong>Definition:</strong> Dividing pipeline stages into smaller substages for higher clock frequency</li>
+                                                        <li><strong>Benefit:</strong> Allows higher clock frequencies as each stage does less work</li>
+                                                        <li><strong>Challenge:</strong> Increases branch misprediction penalty and overhead from latches</li>
+                                                        <li><strong>Example:</strong> MIPS R4000 with 8-stage pipeline (subdivided IF and EX stages)</li>
                                                     </ul>
+                                                    
+                                                    <svg viewBox="0 0 550 80" xmlns="http://www.w3.org/2000/svg">
+                                                        <!-- Standard pipeline -->
+                                                        <rect x="10" y="10" width="100" height="20" fill="#4285f4" rx="3" />
+                                                        <rect x="120" y="10" width="100" height="20" fill="#34a853" rx="3" />
+                                                        <rect x="230" y="10" width="100" height="20" fill="#fbbc05" rx="3" />
+                                                        <rect x="340" y="10" width="100" height="20" fill="#ea4335" rx="3" />
+                                                        <rect x="450" y="10" width="90" height="20" fill="#9c27b0" rx="3" />
+                                                        
+                                                        <text x="60" y="24" text-anchor="middle" font-size="10" fill="white">IF</text>
+                                                        <text x="170" y="24" text-anchor="middle" font-size="10" fill="white">ID</text>
+                                                        <text x="280" y="24" text-anchor="middle" font-size="10" fill="white">EX</text>
+                                                        <text x="390" y="24" text-anchor="middle" font-size="10" fill="white">MEM</text>
+                                                        <text x="495" y="24" text-anchor="middle" font-size="10" fill="white">WB</text>
+                                                        
+                                                        <!-- Superpipeline -->
+                                                        <rect x="10" y="50" width="50" height="20" fill="#4285f4" rx="3" />
+                                                        <rect x="65" y="50" width="50" height="20" fill="#4285f4" fill-opacity="0.7" rx="3" />
+                                                        <rect x="120" y="50" width="50" height="20" fill="#34a853" rx="3" />
+                                                        <rect x="175" y="50" width="50" height="20" fill="#34a853" fill-opacity="0.7" rx="3" />
+                                                        <rect x="230" y="50" width="33" height="20" fill="#fbbc05" rx="3" />
+                                                        <rect x="268" y="50" width="33" height="20" fill="#fbbc05" fill-opacity="0.8" rx="3" />
+                                                        <rect x="306" y="50" width="33" height="20" fill="#fbbc05" fill-opacity="0.6" rx="3" />
+                                                        <rect x="340" y="50" width="50" height="20" fill="#ea4335" rx="3" />
+                                                        <rect x="395" y="50" width="50" height="20" fill="#ea4335" fill-opacity="0.7" rx="3" />
+                                                        <rect x="450" y="50" width="90" height="20" fill="#9c27b0" rx="3" />
+                                                        
+                                                        <text x="35" y="64" text-anchor="middle" font-size="8" fill="white">IF1</text>
+                                                        <text x="90" y="64" text-anchor="middle" font-size="8" fill="white">IF2</text>
+                                                        <text x="145" y="64" text-anchor="middle" font-size="8" fill="white">ID1</text>
+                                                        <text x="200" y="64" text-anchor="middle" font-size="8" fill="white">ID2</text>
+                                                        <text x="246" y="64" text-anchor="middle" font-size="8" fill="white">EX1</text>
+                                                        <text x="284" y="64" text-anchor="middle" font-size="8" fill="white">EX2</text>
+                                                        <text x="322" y="64" text-anchor="middle" font-size="8" fill="white">EX3</text>
+                                                        <text x="365" y="64" text-anchor="middle" font-size="8" fill="white">M1</text>
+                                                        <text x="420" y="64" text-anchor="middle" font-size="8" fill="white">M2</text>
+                                                        <text x="495" y="64" text-anchor="middle" font-size="8" fill="white">WB</text>
+                                                        
+                                                        <text x="10" y="24" text-anchor="start" font-size="10" fill="#333" x="-5" y="-5">5-stage:</text>
+                                                        <text x="10" y="64" text-anchor="start" font-size="10" fill="#333" x="-5" y="-5">10-stage:</text>
+                                                    </svg>
                                                     
                                                     <h6>Deep Pipelining:</h6>
                                                     <ul>
                                                         <li><strong>Definition:</strong> Pipelines with many stages (15-30+)</li>
+                                                        <li><strong>Implementation details:</strong>
+                                                            <ul>
+                                                                <li>Front-end: Instruction fetch, decode, and dispatch</li>
+                                                                <li>Execution engine: Out-of-order execution units</li>
+                                                                <li>Back-end: Retirement and commit stages</li>
+                                                            </ul>
+                                                        </li>
                                                         <li><strong>Examples:</strong>
                                                             <ul>
-                                                                <li>Intel Pentium 4: 20+ stage pipeline</li>
+                                                                <li>Intel Pentium 4 (Netburst): 20+ stage pipeline</li>
                                                                 <li>Intel Skylake: ~14-19 stages</li>
                                                                 <li>AMD Zen: ~12-17 stages</li>
                                                             </ul>
                                                         </li>
-                                                        <li><strong>Tradeoffs:</strong> Higher frequencies but increased hazard penalties</li>
+                                                        <li><strong>Tradeoffs:</strong> Higher frequencies but increased hazard penalties and power consumption</li>
                                                     </ul>
                                                     
                                                     <h6>Dynamic Pipelining:</h6>
@@ -6081,18 +6259,18 @@ done:
                                                         <li><strong>Definition:</strong> Adaptively changing pipeline behavior based on program characteristics</li>
                                                         <li><strong>Techniques:</strong>
                                                             <ul>
-                                                                <li>Loop stream detection and optimization</li>
-                                                                <li>Micro-op fusion and fission</li>
-                                                                <li>Adaptive branch prediction</li>
+                                                                <li><strong>Loop stream detection:</strong> Cache decoded micro-ops for loop bodies</li>
+                                                                <li><strong>Micro-op fusion:</strong> Combining multiple operations into single execution units</li>
+                                                                <li><strong>Adaptive branch prediction:</strong> Using multiple prediction algorithms and selecting best performer</li>
                                                             </ul>
                                                         </li>
                                                     </ul>
                                                     
                                                     <h6>Multi-threading in Pipelines:</h6>
                                                     <ul>
-                                                        <li><strong>Fine-grained MT:</strong> Alternate threads each cycle</li>
-                                                        <li><strong>Coarse-grained MT:</strong> Switch on long-latency events</li>
-                                                        <li><strong>Simultaneous MT (SMT):</strong> Multiple threads share execution resources</li>
+                                                        <li><strong>Fine-grained MT:</strong> Alternate threads each cycle to hide pipeline latencies</li>
+                                                        <li><strong>Coarse-grained MT:</strong> Switch threads on long-latency events (cache misses)</li>
+                                                        <li><strong>Simultaneous MT (SMT):</strong> Multiple threads share execution resources (e.g., Intel Hyper-Threading)</li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-6">
@@ -6109,6 +6287,12 @@ done:
                                                     
                                                     <h6>Pipeline Performance Equation:</h6>
                                                     <p>CPU Time = Instruction Count × CPI × Clock Cycle Time</p>
+                                                    <p>Where:</p>
+                                                    <ul>
+                                                        <li>CPI = Base CPI + Pipeline Stall Cycles per Instruction</li>
+                                                        <li>Ideal CPI with perfect pipelining = 1.0</li>
+                                                        <li>Actual CPI = Ideal CPI + Stalls due to hazards</li>
+                                                    </ul>
                                                     
                                                     <div class="alert alert-warning">
                                                         <h5>Case Study: Pipeline Optimization in Modern CPUs</h5>
@@ -6119,11 +6303,117 @@ done:
                                                             <li>With branch prediction + speculative execution: Performance improves by up to 5x</li>
                                                         </ul>
                                                         <p>Modern CPUs employ sophisticated branch predictors with >95% accuracy for typical code.</p>
+                                                        
+                                                        <h6>Calculation:</h6>
+                                                        <p>Assuming 20% of instructions are branches:</p>
+                                                        <ul>
+                                                            <li>No prediction: 20% × 20 cycles = 4.0 extra cycles per instruction</li>
+                                                            <li>90% accuracy: 20% × 10% × 20 cycles = 0.4 extra cycles per instruction</li>
+                                                            <li>Performance improvement: 4.0 ÷ 0.4 = 10×</li>
+                                                        </ul>
                                                     </div>
                                                     
                                                     <h6>Advanced Pipeline Visualization:</h6>
-                                                    <img src="/api/placeholder/500/180" alt="Advanced Pipeline Visualization" class="img-fluid" />
-                                                    <p class="small text-muted mt-1">Pipeline diagram showing instruction execution across multiple stages with hazard resolution, forwarding paths, and speculative execution.</p>
+                                                    <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg">
+                                                        <!-- Time/Cycle rulers -->
+                                                        <line x1="50" y1="20" x2="480" y2="20" stroke="#777" stroke-width="1" />
+                                                        <text x="80" y="15" text-anchor="middle" font-size="8">C1</text>
+                                                        <text x="120" y="15" text-anchor="middle" font-size="8">C2</text>
+                                                        <text x="160" y="15" text-anchor="middle" font-size="8">C3</text>
+                                                        <text x="200" y="15" text-anchor="middle" font-size="8">C4</text>
+                                                        <text x="240" y="15" text-anchor="middle" font-size="8">C5</text>
+                                                        <text x="280" y="15" text-anchor="middle" font-size="8">C6</text>
+                                                        <text x="320" y="15" text-anchor="middle" font-size="8">C7</text>
+                                                        <text x="360" y="15" text-anchor="middle" font-size="8">C8</text>
+                                                        <text x="400" y="15" text-anchor="middle" font-size="8">C9</text>
+                                                        <text x="440" y="15" text-anchor="middle" font-size="8">C10</text>
+                                                        
+                                                        <!-- Pipeline stages -->
+                                                        <rect x="50" y="30" width="50" height="120" fill="#e3f2fd" rx="3" />
+                                                        <rect x="100" y="30" width="50" height="120" fill="#bbdefb" rx="3" />
+                                                        <rect x="150" y="30" width="50" height="120" fill="#90caf9" rx="3" />
+                                                        <rect x="200" y="30" width="50" height="120" fill="#64b5f6" rx="3" />
+                                                        <rect x="250" y="30" width="50" height="120" fill="#42a5f5" rx="3" />
+                                                        <rect x="300" y="30" width="50" height="120" fill="#2196f3" rx="3" />
+                                                        <rect x="350" y="30" width="50" height="120" fill="#1e88e5" rx="3" />
+                                                        <rect x="400" y="30" width="50" height="120" fill="#1976d2" rx="3" />
+                                                        <rect x="450" y="30" width="50" height="120" fill="#1565c0" rx="3" />
+                                                        
+                                                        <!-- Stage labels -->
+                                                        <text x="75" y="50" text-anchor="middle" font-size="8" font-weight="bold">Fetch</text>
+                                                        <text x="125" y="50" text-anchor="middle" font-size="8" font-weight="bold">Decode</text>
+                                                        <text x="175" y="50" text-anchor="middle" font-size="8" font-weight="bold">Rename</text>
+                                                        <text x="225" y="50" text-anchor="middle" font-size="8" font-weight="bold">Dispatch</text>
+                                                        <text x="275" y="50" text-anchor="middle" font-size="8" font-weight="bold">Issue</text>
+                                                        <text x="325" y="50" text-anchor="middle" font-size="8" font-weight="bold">Execute</text>
+                                                        <text x="375" y="50" text-anchor="middle" font-size="8" font-weight="bold">Memory</text>
+                                                        <text x="425" y="50" text-anchor="middle" font-size="8" font-weight="bold">Write</text>
+                                                        <text x="475" y="50" text-anchor="middle" font-size="8" font-weight="bold">Retire</text>
+                                                        
+                                                        <!-- Instruction flow -->
+                                                        <rect x="50" y="70" width="50" height="20" fill="#4caf50" rx="3" />
+                                                        <rect x="100" y="70" width="50" height="20" fill="#4caf50" rx="3" />
+                                                        <rect x="150" y="70" width="50" height="20" fill="#4caf50" rx="3" />
+                                                        <rect x="200" y="70" width="50" height="20" fill="#4caf50" rx="3" />
+                                                        <rect x="250" y="70" width="50" height="20" fill="#4caf50" rx="3" />
+                                                        <rect x="300" y="70" width="50" height="20" fill="#4caf50" rx="3" />
+                                                        <rect x="350" y="70" width="50" height="20" fill="#4caf50" rx="3" />
+                                                        <rect x="400" y="70" width="50" height="20" fill="#4caf50" rx="3" />
+                                                        <rect x="450" y="70" width="50" height="20" fill="#4caf50" rx="3" />
+                                                        
+                                                        <text x="75" y="84" text-anchor="middle" font-size="8" fill="white">I1</text>
+                                                        <text x="125" y="84" text-anchor="middle" font-size="8" fill="white">I1</text>
+                                                        <text x="175" y="84" text-anchor="middle" font-size="8" fill="white">I1</text>
+                                                        <text x="225" y="84" text-anchor="middle" font-size="8" fill="white">I1</text>
+                                                        <text x="275" y="84" text-anchor="middle" font-size="8" fill="white">I1</text>
+                                                        <text x="325" y="84" text-anchor="middle" font-size="8" fill="white">I1</text>
+                                                        <text x="375" y="84" text-anchor="middle" font-size="8" fill="white">I1</text>
+                                                        <text x="425" y="84" text-anchor="middle" font-size="8" fill="white">I1</text>
+                                                        <text x="475" y="84" text-anchor="middle" font-size="8" fill="white">I1</text>
+                                                        
+                                                        <!-- Second instruction -->
+                                                        <rect x="100" y="100" width="50" height="20" fill="#2196f3" rx="3" />
+                                                        <rect x="150" y="100" width="50" height="20" fill="#2196f3" rx="3" />
+                                                        <rect x="200" y="100" width="50" height="20" fill="#2196f3" rx="3" />
+                                                        <rect x="250" y="100" width="50" height="20" fill="#2196f3" rx="3" />
+                                                        <rect x="300" y="100" width="50" height="20" fill="#2196f3" rx="3" />
+                                                        <rect x="350" y="100" width="50" height="20" fill="#2196f3" rx="3" />
+                                                        <rect x="400" y="100" width="50" height="20" fill="#2196f3" rx="3" />
+                                                        <rect x="450" y="100" width="50" height="20" fill="#2196f3" rx="3" />
+                                                        
+                                                        <text x="125" y="114" text-anchor="middle" font-size="8" fill="white">I2</text>
+                                                        <text x="175" y="114" text-anchor="middle" font-size="8" fill="white">I2</text>
+                                                        <text x="225" y="114" text-anchor="middle" font-size="8" fill="white">I2</text>
+                                                        <text x="275" y="114" text-anchor="middle" font-size="8" fill="white">I2</text>
+                                                        <text x="325" y="114" text-anchor="middle" font-size="8" fill="white">I2</text>
+                                                        <text x="375" y="114" text-anchor="middle" font-size="8" fill="white">I2</text>
+                                                        <text x="425" y="114" text-anchor="middle" font-size="8" fill="white">I2</text>
+                                                        <text x="475" y="114" text-anchor="middle" font-size="8" fill="white">I2</text>
+                                                        
+                                                        <!-- Branch instruction -->
+                                                        <rect x="150" y="130" width="50" height="20" fill="#f44336" rx="3" />
+                                                        <rect x="200" y="130" width="50" height="20" fill="#f44336" rx="3" />
+                                                        <rect x="250" y="130" width="50" height="20" fill="#f44336" rx="3" />
+                                                        <rect x="300" y="130" width="50" height="20" fill="#f44336" rx="3" />
+                                                        <rect x="350" y="130" width="50" height="20" fill="#f44336" rx="3" />
+                                                        <rect x="400" y="130" width="50" height="20" fill="#f44336" rx="3" />
+                                                        <rect x="450" y="130" width="50" height="20" fill="#f44336" rx="3" />
+                                                        
+                                                        <text x="175" y="144" text-anchor="middle" font-size="8" fill="white">BR</text>
+                                                        <text x="225" y="144" text-anchor="middle" font-size="8" fill="white">BR</text>
+                                                        <text x="275" y="144" text-anchor="middle" font-size="8" fill="white">BR</text>
+                                                        <text x="325" y="144" text-anchor="middle" font-size="8" fill="white">BR</text>
+                                                        <text x="375" y="144" text-anchor="middle" font-size="8" fill="white">BR</text>
+                                                        <text x="425" y="144" text-anchor="middle" font-size="8" fill="white">BR</text>
+                                                        <text x="475" y="144" text-anchor="middle" font-size="8" fill="white">BR</text>
+                                                        
+                                                        <!-- Branch misprediction -->
+                                                        <rect x="350" y="160" width="150" height="20" fill="#ffcdd2" rx="3" stroke="#f44336" stroke-dasharray="3,2" />
+                                                        <text x="425" y="174" text-anchor="middle" font-size="8">Flushed Instructions</text>
+                                                        <path d="M 325 140 L 325 160" stroke="#f44336" stroke-width="2" stroke-dasharray="3,2" />
+                                                        <text x="300" y="155" text-anchor="end" font-size="8">Branch resolves</text>
+                                                    </svg>
+                                                    <p class="small text-muted mt-1">Modern CPU pipeline showing deep pipelining, out-of-order execution, and branch misprediction recovery.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -6136,7 +6426,6 @@ done:
                             <button class="btn btn-primary" onclick="navigateToSlide('4.9')">Next</button>
                         </div>
                     </div>
-
                     <!-- Slide 4.9: RISC vs CISC -->
                     <div class="slide" id="slide-4.9">
                         <h2 class="slide-title">RISC vs CISC</h2>
